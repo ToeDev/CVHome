@@ -23,17 +23,9 @@ public class CVHome extends JavaPlugin implements Listener {
 
     private HomeDB homeDB;
     private HomeManager homeManager;
-
-    private static CVHome instance;
-    
-    public static CVHome getInstance() {
-        return instance;
-    }
     
     @Override
     public void onEnable() {
-        instance = this;
-        
         getServer().getPluginManager().registerEvents(this, this);
 
         final File dataDir = getDataFolder();
@@ -68,7 +60,6 @@ public class CVHome extends JavaPlugin implements Listener {
     
     @Override
     public void onDisable() {
-        instance = null;
         this.homeDB.disconnect();
     }
     
