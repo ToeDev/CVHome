@@ -4,7 +4,7 @@
   <groupId>org.cubeville</groupId>
   <artifactId>CVHome</artifactId>
   <packaging>jar</packaging>
-  <version>0.2</version>
+  <version>1.19</version>
   <name>CVHome</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -14,21 +14,21 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.18.1-R0.1-SNAPSHOT</version>
+      <version>1.19-R0.1-SNAPSHOT</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.cubeville</groupId>
       <artifactId>CVTools</artifactId>
-      <version>0.5</version>
+      <version>1.19</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.xerial</groupId>
       <artifactId>sqlite-jdbc</artifactId>
-      <version>3.36.0.1</version>
+      <version>3.36.0.3</version>
     </dependency>
   </dependencies>
   <build>
