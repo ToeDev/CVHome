@@ -23,7 +23,7 @@ public class HomeDB extends HomeSQL {
             "`homeNumber` TINYINT NOT NULL," +
             "`playerID` varchar(32) NOT NULL," +
             "`playerName` varchar(16) NOT NULL," +
-            "`world` varchar(64) NOT NULL," +
+            "`worldName` varchar(64) NOT NULL," +
             "`x` BIGINT NOT NULL," +
             "`y` BIGINT NOT NULL," +
             "`z` BIGINT NOT NULL," +
@@ -52,7 +52,7 @@ public class HomeDB extends HomeSQL {
 
     public void addHome(Home home) {
         Location loc = home.getHomeLocation();
-        update("INSERT INTO `homes` (homeNumber, playerID, playerName, world, x, y, z, pitch, yaw, timeCreated) " +
+        update("INSERT INTO `homes` (homeNumber, playerID, playerName, worldName, x, y, z, pitch, yaw, timeCreated) " +
                 "VALUES(\"" + home.getHomeNumber() + "\", \"" + home.getPlayerId().toString() + "\", \"" + home.getPlayerName() + "\", \"" + Objects.requireNonNull(loc.getWorld()).getName() + "\", \"" + loc.getX() + "\", \"" + loc.getY() + "\", \"" + loc.getZ() + "\", \"" + loc.getPitch() + "\", \"" + loc.getYaw() + "\", \"" + home.getDateSet() + "\");"
         );
     }
@@ -61,7 +61,7 @@ public class HomeDB extends HomeSQL {
         Location loc = home.getHomeLocation();
         update("UPDATE `homes`" +
                 " SET" +
-                " world = \"" + Objects.requireNonNull(loc.getWorld()).getName() + "\"," +
+                " worldName = \"" + Objects.requireNonNull(loc.getWorld()).getName() + "\"," +
                 " x = \"" + loc.getX() + "\"," +
                 " y = \"" + loc.getY() + "\"," +
                 " z = \"" + loc.getZ() + "\"," +

@@ -40,7 +40,7 @@ public class HomeManager {
             ResultSet homesSet = homeDB.getAllHomes();
             if(homesSet == null) return;
             while(homesSet.next()) {
-                Home home = new Home(new Location(Bukkit.getWorld(homesSet.getString("world")), homesSet.getFloat("x"), homesSet.getFloat("y"), homesSet.getFloat("z"), homesSet.getFloat("yaw"), homesSet.getFloat("pitch")), homesSet.getInt("homeNumber"), UUID.fromString(homesSet.getString("playerID")), homesSet.getString("playerName"), homesSet.getLong("timeCreated"));
+                Home home = new Home(new Location(Bukkit.getWorld(homesSet.getString("worldName")), homesSet.getFloat("x"), homesSet.getFloat("y"), homesSet.getFloat("z"), homesSet.getFloat("yaw"), homesSet.getFloat("pitch")), homesSet.getInt("homeNumber"), UUID.fromString(homesSet.getString("playerID")), homesSet.getString("playerName"), homesSet.getLong("timeCreated"));
                 this.playerHomes.add(home);
             }
         } catch (SQLException e) {
