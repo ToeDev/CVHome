@@ -10,19 +10,22 @@ import org.cubeville.commons.commands.Command;
 import org.cubeville.commons.commands.CommandExecutionException;
 import org.cubeville.commons.commands.CommandParameterString;
 import org.cubeville.commons.commands.CommandResponse;
+import org.cubeville.cvhome.CVHome;
 import org.cubeville.cvhome.HomeManager;
 
 public class HomeTeleport extends Command {
 
+    private final CVHome plugin;
     private final HomeManager homeManager;
 
-    public HomeTeleport(HomeManager homeManager) {
+    public HomeTeleport(CVHome plugin, HomeManager homeManager) {
         super("");
         addFlag("1");
         addFlag("2");
         addFlag("3");
         addFlag("4");
         addOptionalBaseParameter(new CommandParameterString());
+        this.plugin = plugin;
         this.homeManager = homeManager.getInstance();
     }
 
@@ -34,6 +37,10 @@ public class HomeTeleport extends Command {
         boolean home2Perm = player.hasPermission("cvhome.home2");
         boolean home3Perm = player.hasPermission("cvhome.home3");
         boolean home4Perm = player.hasPermission("cvhome.home4");
+
+        if(!plugin.isDeathTimerExpired(player.getUniqueId())) {
+            throw new CommandExecutionException("&cYou must wait " + plugin.getDeathDelay() + " seconds after death before using /home.");
+        }
         
         if(baseParameters.size() == 0) {
             if(flags.size() == 0) {
